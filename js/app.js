@@ -42,10 +42,49 @@ import fetch from "isomorphic-fetch"
 import DOM from 'react-dom'
 import React, {Component} from 'react'
 
+class Book extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    const book = this.props.book;
+    return <div>
+      <h3>{book.title}</h3>
+      <img src={book.photoUrl} />
+    </div>
+  }
+}
+
+class BookList extends React.Component {
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      books: []
+    }
+  }
+
+  componentDidMount(){
+    let component = this;
+    fetch("/books")
+      .then( (response) => response.json())
+      .then( (json) => component.setState({books: json.books}))
+  }
+  render(){
+    return <div>
+      {this.state.books.map( (book) => {
+        return <Book key={book.id} book={book}/>
+      })}
+    </div>;
+  }
+}
+
 function app() {
     // start app
     // new Router()
-    DOM.render(<p>test 2</p>, document.querySelector('.container'))
+    DOM.render(<BookList/>, document.querySelector('.container'))
 }
 
 app()
