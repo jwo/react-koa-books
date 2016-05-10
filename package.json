@@ -115,6 +115,8 @@
     "request": "^2.72.0",
     "sane": "^1.3",
     "sequelize": "^3.23.0",
+    "pg": "^4.5.5",
+    "pg-hstore": "^2.3.2",
     "spdy": "^3.3.2",
     "universal-utils": "^1.0.14",
     "vtop": "^0.5",
@@ -126,8 +128,6 @@
     "esdoc": "^0.4",
     "esdoc-es7-plugin": "^0.0",
     "nsp": "^2.0",
-    "pg": "^4.5.5",
-    "pg-hstore": "^2.3.2",
     "surge": "^0.17"
   }
 }
